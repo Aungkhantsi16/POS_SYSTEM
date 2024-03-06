@@ -55,32 +55,36 @@ function EditProduct() {
   };
 
   return (
-    <div>
-      <h2>Edit Product</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Price:
-          <input
-            type="text"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Save</button>
-      </form>
-    </div>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-4 w-fit m-0 mx-auto mt-40"
+    >
+      <h2 className="font-bold text-2xl tracking-wide">EDIT PRODUCT</h2>
+      <label className="font-bold">Name:</label>
+      <input
+        className="p-2 border border-gray-300 rounded"
+        type="text"
+        name="name"
+        value={formData.name}
+        onChange={handleChange}
+      />
+      <br />
+      <label className="font-bold">Price:</label>
+      <input
+        className="p-2 border border-gray-300 rounded"
+        type="text"
+        name="price"
+        value={formData.price}
+        onChange={handleChange}
+      />
+      <br />
+      <button
+        type="submit"
+        className="bg-sky-600 text-white p-0.5 px-1 rounded cursor-pointer border-none hover:bg-sky-900"
+      >
+        Save
+      </button>
+    </form>
   );
 }
 
