@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { ProductsContext } from "../ProductsContext";
 
 function AddProduct() {
   const navigate = useNavigate();
+  const { updateImage } = useContext(ProductsContext);
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -10,18 +12,12 @@ function AddProduct() {
   });
 
   const handleChange = (event) => {
-    if (event.target.name === "image") {
-      setFormData({ ...formData, image: event.target.files[0] });
-    } else {
-      setFormData({ ...formData, [event.target.name]: event.target.value });
-    }
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
-    // Fetch products from a more reliable source (e.g., a server)
-    // For now, we'll use localStorage for demonstration
     const storedProducts = localStorage.getItem("products");
     let products = [];
     if (storedProducts) {
@@ -32,19 +28,29 @@ function AddProduct() {
       }
     }
 
-    const productData = {
-      id: products.length > 0 ? Math.max(...products.map((p) => p.id)) + 1 : 1, // Generate a unique id
-      ...formData,
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const imageId = Math.random().toString(36).substring(7);
+      const imageFiles = JSON.parse(localStorage.getItem("images")) || {};
+      imageFiles[imageId] = e.target.result;
+
+      const productData = {
+        id:
+          products.length > 0 ? Math.max(...products.map((p) => p.id)) + 1 : 1,
+        ...formData,
+        imageId: imageId,
+      };
+
+      products.push(productData);
+      localStorage.setItem("products", JSON.stringify(products));
+
+      // Update images in local storage
+      updateImage(imageId, e.target.result);
+
+      setFormData({ name: "", price: "", imageId: null });
+      navigate("/");
     };
-
-    products.push(productData);
-    localStorage.setItem("products", JSON.stringify(products));
-
-    // Reset form
-    setFormData({ name: "", price: "", image: null });
-
-    // Navigate to home page after submission (using useNavigate)
-    navigate("/");
+    reader.readAsDataURL(formData.image);
   };
 
   return (
@@ -87,7 +93,9 @@ function AddProduct() {
         type="file"
         id="image"
         name="image"
-        onChange={handleChange}
+        onChange={(event) =>
+          setFormData({ ...formData, image: event.target.files[0] })
+        }
         accept="image/*"
         required
       />
