@@ -48,7 +48,7 @@ function AddProduct() {
       updateImage(imageId, e.target.result);
 
       setFormData({ name: "", price: "", imageId: null });
-      navigate("/");
+      navigate("/"); // Navigate back to the main page
     };
     reader.readAsDataURL(formData.image);
   };
@@ -56,13 +56,12 @@ function AddProduct() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 w-fit m-0 mx-auto mt-40"
+      className="max-w-md mx-auto mt-8 p-6 bg-white rounded shadow"
     >
-      <label htmlFor="name" className="font-bold">
-        Name:
-      </label>
+      <h2 className="text-xl font-semibold mb-4">Add Product</h2>
+      <label className="block mb-2 font-semibold">Name:</label>
       <input
-        className="p-2 border border-gray-300 rounded"
+        className="w-full p-2 border border-gray-300 rounded"
         type="text"
         id="name"
         name="name"
@@ -70,12 +69,9 @@ function AddProduct() {
         onChange={handleChange}
         required
       />
-      <br />
-      <label htmlFor="price" className="font-bold">
-        Price:
-      </label>
+      <label className="block mt-4 mb-2 font-semibold">Price:</label>
       <input
-        className="p-2 border border-gray-300 rounded"
+        className="w-full p-2 border border-gray-300 rounded"
         type="number"
         id="price"
         name="price"
@@ -83,13 +79,9 @@ function AddProduct() {
         onChange={handleChange}
         required
       />
-      <br />
-      <br />
-      <label htmlFor="image" className="font-bold">
-        Image:
-      </label>
+      <label className="block mt-4 mb-2 font-semibold">Image:</label>
       <input
-        className="p-2 border border-gray-300 rounded"
+        className="w-full p-2 border border-gray-300 rounded"
         type="file"
         id="image"
         name="image"
@@ -103,13 +95,12 @@ function AddProduct() {
         <img
           src={URL.createObjectURL(formData.image)}
           alt="Preview"
-          className="w-64 h-64 object-cover mt-4"
+          className="mt-4 w-full h-40 object-cover"
         />
       )}
-      <br />
       <button
         type="submit"
-        className="bg-sky-600 text-white p-0.5 px-1 rounded cursor-pointer border-none hover:bg-sky-900"
+        className="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-700"
       >
         Submit
       </button>

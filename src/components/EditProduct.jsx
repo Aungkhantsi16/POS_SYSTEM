@@ -57,30 +57,28 @@ function EditProduct() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 w-fit m-0 mx-auto mt-40"
+      className="max-w-md mx-auto mt-8 p-6 bg-white rounded shadow"
     >
-      <h2 className="font-bold text-2xl tracking-wide">EDIT PRODUCT</h2>
-      <label className="font-bold">Name:</label>
+      <h2 className="text-xl font-semibold mb-4">Edit Product</h2>
+      <label className="block mb-2 font-semibold">Name:</label>
       <input
-        className="p-2 border border-gray-300 rounded"
+        className="w-full p-2 border border-gray-300 rounded"
         type="text"
         name="name"
         value={formData.name}
         onChange={handleChange}
       />
-      <br />
-      <label className="font-bold">Price:</label>
+      <label className="block mb-2 font-semibold">Price:</label>
       <input
-        className="p-2 border border-gray-300 rounded"
+        className="w-full p-2 border border-gray-300 rounded"
         type="text"
         name="price"
         value={formData.price}
         onChange={handleChange}
       />
-      <br />
       <button
         type="submit"
-        className="bg-sky-600 text-white p-0.5 px-1 rounded cursor-pointer border-none hover:bg-sky-900"
+        className="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-700"
       >
         Save
       </button>

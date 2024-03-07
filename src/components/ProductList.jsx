@@ -7,7 +7,7 @@ const ProductList = () => {
   const { products, deleteProduct, editProduct } = useContext(ProductsContext);
 
   return (
-    <div className="product-list">
+    <div className="grid grid-cols-3 gap-4 mt-8 mx-4">
       <ul>
         {products.map((product) => (
           <ProductCard
