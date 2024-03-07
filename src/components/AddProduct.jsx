@@ -4,7 +4,7 @@ import { ProductsContext } from "../ProductsContext";
 
 function AddProduct() {
   const navigate = useNavigate();
-  const { updateImage } = useContext(ProductsContext);
+  const { updateImage, updateProduct } = useContext(ProductsContext); // Destructure updateProduct from ProductsContext
   const [formData, setFormData] = useState({
     name: "",
     price: "",

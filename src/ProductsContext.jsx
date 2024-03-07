@@ -1,10 +1,10 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 export const ProductsContext = createContext();
 
 export const ProductsProvider = ({ children }) => {
-  const MAX_PRODUCTS = 10;
-  const MAX_IMAGES = 10;
+  const MAX_PRODUCTS = 10; // Set maximum number of products
+  const MAX_IMAGES = 10; // Set maximum number of images
   const [products, setProducts] = useState([]);
   const [images, setImages] = useState({});
 
@@ -14,7 +14,7 @@ export const ProductsProvider = ({ children }) => {
       try {
         const parsedProducts = JSON.parse(storedProducts);
         if (Array.isArray(parsedProducts)) {
-          setProducts(parsedProducts.slice(0, MAX_PRODUCTS));
+          setProducts(parsedProducts.slice(0, MAX_PRODUCTS)); // Limit the number of products
         } else {
           console.error(
             "Invalid data format in localStorage. Resetting products."
@@ -51,7 +51,7 @@ export const ProductsProvider = ({ children }) => {
   };
 
   const updateProduct = (updatedProducts) => {
-    const limitedProducts = updatedProducts.slice(0, MAX_PRODUCTS);
+    const limitedProducts = updatedProducts.slice(0, MAX_PRODUCTS); // Limit the number of products
     setProducts(limitedProducts);
     localStorage.setItem("products", JSON.stringify(limitedProducts));
   };
@@ -71,7 +71,7 @@ export const ProductsProvider = ({ children }) => {
     const updatedImages = { ...images, [imageId]: imageData };
     const limitedImages = Object.fromEntries(
       Object.entries(updatedImages).slice(-MAX_IMAGES)
-    );
+    ); // Limit the number of images
     setImages(limitedImages);
     localStorage.setItem("images", JSON.stringify(limitedImages));
   };

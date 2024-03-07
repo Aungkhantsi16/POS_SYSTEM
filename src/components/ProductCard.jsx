@@ -1,8 +1,11 @@
+// ProductCard.jsx
 import React, { useContext } from "react";
 import { ProductsContext } from "../ProductsContext";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard({ product }) {
-  const { images, updateProduct, products } = useContext(ProductsContext);
+  const { products, updateProduct, images } = useContext(ProductsContext);
+  const navigate = useNavigate();
 
   const handleEdit = () => {
     navigate(`/editproduct/${product.id}`);
@@ -16,7 +19,7 @@ function ProductCard({ product }) {
   return (
     <div className="w-64 m-4 p-4 bg-white rounded shadow-sm flex flex-col items-center">
       <img
-        src={images[product.imageId]}
+        src={images[product.imageId]} // Use images from ProductsContext
         alt={product.name}
         className="w-full h-48 object-cover"
       />
