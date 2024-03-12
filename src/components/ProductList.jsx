@@ -1,24 +1,27 @@
 // ProductList.jsx
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../ProductsContext";
 import ProductCard from "./ProductCard";
 
-const ProductList = () => {
-  const { products, deleteProduct, editProduct } = useContext(ProductsContext);
+const ProductList = ({ onAddToOrder }) => {
+  const { products, editProduct } = useContext(ProductsContext);
+  const [updatedProducts, setUpdatedProducts] = useState([]);
+
+  useEffect(() => {
+    setUpdatedProducts(products);
+  }, [products]);
 
   return (
-    <div className="grid grid-cols-3 gap-4 mt-8 mx-4">
-      <ul>
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            deleteProduct={deleteProduct}
-            editProduct={editProduct}
-            images={product.images} // Pass images prop to ProductCard
-          />
-        ))}
-      </ul>
+    <div className="grid grid-cols-4 gap-5 mt-8 ml-4 w-full">
+      {updatedProducts.map((product) => (
+        <ProductCard
+          onAddToOrder={onAddToOrder}
+          key={product.id}
+          product={product}
+          editProduct={editProduct}
+          images={product.images}
+        />
+      ))}
     </div>
   );
 };
