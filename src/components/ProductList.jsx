@@ -8,17 +8,15 @@ const ProductList = () => {
 
   return (
     <div className="grid grid-cols-3 gap-4 mt-8 mx-4">
-      <ul>
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            deleteProduct={deleteProduct}
-            editProduct={editProduct}
-            images={product.images} // Pass images prop to ProductCard
-          />
-        ))}
-      </ul>
+      {products.map((product) => (
+        <ProductCard
+          key={product.id}
+          product={product}
+          deleteProduct={deleteProduct}
+          editProduct={editProduct}
+          images={product.images} // Pass images prop to ProductCard
+        />
+      ))}
     </div>
   );
 };
