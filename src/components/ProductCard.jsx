@@ -23,14 +23,12 @@ function ProductCard({ product, onAddToOrder }) {
   };
 
   return (
-    <div
-      className="w-full p-2 z-0 bg-white rounded-xl shadow-sm flex flex-col "
-      onClick={() => onAddToOrder(product)}
-    >
+    <div className="w-full p-2 z-0 bg-white rounded-xl shadow-sm flex flex-col ">
       <img
         src={images[product.imageId]} // Use images from ProductsContext
         alt={product.name}
         className="w-full h-48 rounded-lg object-cover"
+        onClick={() => onAddToOrder(product)}
       />
 
       <div className="flex justify-between z-50">

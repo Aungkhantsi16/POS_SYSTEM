@@ -55,34 +55,36 @@ function EditProduct() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-md mx-auto mt-8 p-6 bg-white rounded shadow"
-    >
-      <h2 className="text-xl font-semibold mb-4">Edit Product</h2>
-      <label className="block mb-2 font-semibold">Name:</label>
-      <input
-        className="w-full p-2 border border-gray-300 rounded"
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-      />
-      <label className="block mb-2 font-semibold">Price:</label>
-      <input
-        className="w-full p-2 border border-gray-300 rounded"
-        type="text"
-        name="price"
-        value={formData.price}
-        onChange={handleChange}
-      />
-      <button
-        type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-700"
+    <div className="flex h-[90vh] justify-center items-center">
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-lg w-full p-6 bg-white rounded shadow"
       >
-        Save
-      </button>
-    </form>
+        <h2 className="text-xl font-semibold mb-4">Edit Product Information</h2>
+        <label className="block mb-2 font-semibold">Product Name:</label>
+        <input
+          className="w-full p-2 border border-gray-300 rounded"
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+        <label className="block mb-2 font-semibold">Price:</label>
+        <input
+          className="w-full p-2 border border-gray-300 rounded"
+          type="text"
+          name="price"
+          value={formData.price}
+          onChange={handleChange}
+        />
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded mt-4 hover:bg-blue-700"
+        >
+          Save
+        </button>
+      </form>
+    </div>
   );
 }
 

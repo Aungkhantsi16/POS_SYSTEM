@@ -33,7 +33,7 @@ export default function OrderBar() {
   };
 
   return (
-    <div className="h-[80vh] flex flex-col justify-between">
+    <div className="h-[85vh] flex flex-col justify-between">
       <ul>
         {order.map((item, index) => (
           <li key={item.id} className="mt-3">
@@ -47,7 +47,7 @@ export default function OrderBar() {
           <p className="text-primary">{totalAmount} Kyat</p>
         </div>
         <button
-          className="bg-primary w-full text-white px-4 py-2 rounded-lg mt-4 hover:bg-blue-700"
+          className="bg-primary w-full text-white px-4 py-4 rounded-lg mt-4 hover:bg-blue-700"
           onClick={handleSubmit}
         >
           Pay Now

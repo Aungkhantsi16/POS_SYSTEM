@@ -42,26 +42,28 @@ function DeleteProduct() {
   }, []);
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-md mx-auto mt-8 p-6 bg-white rounded shadow"
-    >
-      <h2 className="text-xl font-semibold mb-4">Delete Product</h2>
-      <p>Please type "delete" to confirm deletion:</p>
-      <input
-        className="w-full p-2 border border-gray-300 rounded"
-        type="text"
-        value={confirmationInput}
-        onChange={handleChange}
-      />
-
-      <button
-        type="submit"
-        className="bg-red-500 text-white px-4 py-2 rounded mt-4 hover:bg-red-700"
+    <div className="flex justify-center items-center h-[90vh]">
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-md p-6 w-full bg-white rounded shadow"
       >
-        Delete
-      </button>
-    </form>
+        <h2 className="text-xl font-semibold mb-4">Delete Product</h2>
+        <p>Please type "delete" to confirm deletion:</p>
+        <input
+          className="w-full p-2 border border-gray-300 rounded"
+          type="text"
+          value={confirmationInput}
+          onChange={handleChange}
+        />
+
+        <button
+          type="submit"
+          className="bg-red-500 text-white px-4 py-2 rounded mt-4 hover:bg-red-700"
+        >
+          Delete
+        </button>
+      </form>
+    </div>
   );
 }
 
